@@ -26,7 +26,7 @@ arduino.board.listall().then(console.log) // will execute command: arduino-cli b
 ## Reference
 | arduino command | description  | function |
 |---|---|---|
-| `arduino-cli board list` | get all connected board info | `arduino.board.list()` |
-| `arduino-cli board listall` | get all installed and available board info | `arduino.board.listall()` |
+| `arduino-cli board list` | get all connected board info | `arduino.board.list()::Promise<array>` |
+| `arduino-cli board listall` | get all installed and available board info | `arduino.board.listall()::Promise<array>` |
 | *(None)*  | Set config | `arduino.config.set(Object<config>)` |
-| *(None)* | Get config | `arduino.config.get() :: Object<config>` |
+| *(None)* | Get config | `arduino.config.get()::Object<config>` |
