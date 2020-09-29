@@ -5,5 +5,5 @@ this is a arduino-cli wrapper for npm package, allows you to create apps with ar
 ## Get Started
 to get started, download by using npm:
 ```bash
-npm install git@github.com:ljcucc/arduino-cli-wrapper.git
+npm install ljcucc/arduino-cli-wrapper
 ```
