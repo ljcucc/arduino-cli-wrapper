@@ -19,9 +19,23 @@
     });
   }
 
+  function getListFromStdout(data, args){
+    var stdout = data.toString().split("\n");
+    var title = stdout.splice(0,1)[0];
+
+    stdout = stdout.filter((item)=>item=>item.trim() !== "").map(item=>{
+
+      return args.reduce((arg, index)=>{
+        result[arg.id] = item.substring(index == 0? 0: title.indexOf(arg[index].title), index == arg.length-1? arg.length: title.indexOf(arg[index].title));
+      });
+    });
+  }
+
   function getBoardList(){
 
     return cmdPromiseMaker(['board', 'list'], (data, callback)=>{
+      var stdout = getListFromStdout(data);
+      /*
       var stdout = data.toString().split("\n");
       var title = stdout.splice(0,1)[0];
       stdout = stdout.filter((item)=>item.trim() !== "").map((item)=>({
@@ -29,7 +43,7 @@
         type: item.substring(title.indexOf("Type"), title.indexOf("Board Name")).trim(),
         name: item.substring(title.indexOf("Board Name"), title.indexOf("FQBN Core")).trim(),
         fqbn: item.substring(title.indexOf("FQBN Core"), title.length).trim()
-      }));
+      }));*/
 
       callback(stdout);
     });
