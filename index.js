@@ -23,44 +23,46 @@
     var stdout = data.toString().split("\n");
     var title = stdout.splice(0,1)[0];
 
-    stdout = stdout.filter((item)=>item=>item.trim() !== "").map(item=>{
-
-      return args.reduce((arg, index)=>{
-        result[arg.id] = item.substring(index == 0? 0: title.indexOf(arg[index].title), index == arg.length-1? arg.length: title.indexOf(arg[index].title));
-      });
+    return stdout.filter((value)=>value.trim() !== "").map(item=>{
+      return args.reduce((result, arg, index)=>{
+        result[arg.id] = item.substring(index == 0? 0: title.indexOf(args[index].title), index == args.length-1? title.length: title.indexOf(args[index+1].title)).trim()
+        return result;
+      },{});
     });
   }
 
+ var dict2args = (dict) => 
+    Object.keys(dict).reduce((result, id)=>{
+      result.push({
+        title: dict[id],
+        id
+      });
+      return result;
+    }, []);
+
   function getBoardList(){
-
     return cmdPromiseMaker(['board', 'list'], (data, callback)=>{
-      var stdout = getListFromStdout(data);
-      /*
-      var stdout = data.toString().split("\n");
-      var title = stdout.splice(0,1)[0];
-      stdout = stdout.filter((item)=>item.trim() !== "").map((item)=>({
-        path: item.substring(0, title.indexOf("Type")).trim(),
-        type: item.substring(title.indexOf("Type"), title.indexOf("Board Name")).trim(),
-        name: item.substring(title.indexOf("Board Name"), title.indexOf("FQBN Core")).trim(),
-        fqbn: item.substring(title.indexOf("FQBN Core"), title.length).trim()
-      }));*/
+      callback(
+        getListFromStdout(data,dict2args({
+          path: "Path",
+          type: "Type",
+          name: "Board Name",
+          fqbn: "FQBN Core"
+        }))
+      );
 
-      callback(stdout);
     });
   }
 
   function listAllBoard(){
 
     return cmdPromiseMaker(['board', 'listall'], (data, callback)=>{
-      let stdout = data.toString().split("\n");
-      let title = stdout.splice(0,1)[0];
-
-      stdout = stdout.filter(item=>item.trim() !== "").map((item)=>({
-        name: item.substring(0, title.indexOf("FQBN")).trim(),
-        fqbn: item.substring(title.indexOf("FQBN"), title.length).trim()
-      }));
-
-      callback(stdout);
+      callback(
+        getListFromStdout(data,dict2args({
+          name: "Board Name",
+          fqbn: "FQBN"
+        }))
+      );
     });
   }
 
