@@ -1,5 +1,5 @@
 test: 
-	npm test
+	node test.js
 
 git: 
 	git add .
