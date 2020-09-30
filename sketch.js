@@ -5,9 +5,11 @@ function createSketch(name){
   //console.log(path);
   mkdirp(path).then(e=>{
     cmd.cmdPromiseMaker(['sketch','new'], (data, callback)=>{
-
     });
   }).catch(e=>{
     throw e;
   })
+}
+module.exports = {
+  createSketch
 }
