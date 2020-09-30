@@ -86,10 +86,10 @@
       list: getBoardList,
       listall: listAllBoard,
       attach: attachBoard,
-      config: {
-        get: ()=>config,
-        set: (newConfig)=> config = newConfig;
-      }
     },
+    config: {
+      get: ()=>config,
+      set: (newConfig)=> config = newConfig;
+    }
   };
 })();
