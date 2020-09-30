@@ -1,6 +1,9 @@
 (()=>{
 
   var childProcess = require('child_process');
+  const fs = require('fs');
+  const path = require('path');
+  
   var config = {
     sketch_path: "./arduino-cli/sketch"
   };
@@ -55,7 +58,6 @@
   }
 
   function listAllBoard(){
-
     return cmdPromiseMaker(['board', 'listall'], (data, callback)=>{
       callback(
         getListFromStdout(data,dict2args({
@@ -67,17 +69,27 @@
   }
 
   function attachBoard(){
+    fs.writeFile(config.sketch_path.dirname(), "", function(err) {
+      if(err) {
+        return console.log(err);
+      }
+      console.log("The file was saved!");
+    }); 
   }
 
   function getInstalledCore(){
-    
+
   }
 
   module.exports = {
     board:{
       list: getBoardList,
       listall: listAllBoard,
-      attach: attachBoard
-    }
+      attach: attachBoard,
+      config: {
+        get: ()=>config,
+        set: (newConfig)=> config = newConfig;
+      }
+    },
   };
 })();
