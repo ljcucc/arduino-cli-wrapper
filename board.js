@@ -7,7 +7,8 @@ function getBoardList(){
         path: "Path",
         type: "Type",
         name: "Board Name",
-        fqbn: "FQBN Core"
+        fqbn: "FQBN",
+        core: "Core"
       }))
     );
 
