@@ -24,7 +24,7 @@ const arduino = require("arduino-cli-wrapper");
 arduino.board.listall().then(console.log) // will execute command: arduino-cli board listall
 ```
 ## Reference
-Methods:
+### Methods
 | arduino command | description  | function |
 |---|---|---|
 | `arduino-cli board list` | get all connected board info | `arduino.board.list()::Promise<array<board>>` |
@@ -32,7 +32,7 @@ Methods:
 | *(None)*  | Set config | `arduino.config.set(Object<config>)` |
 | *(None)* | Get config | `arduino.config.get()::Object<config>` |
 
-`board` type object:
+### `board` type object
 | key | type | description |
 |---|---|---|
 | `path` | string | Your arduino board path (or COM) on your computer |
@@ -41,7 +41,7 @@ Methods:
 | `fqbn` | string | FQBN code (like `arduino:avr:uno` )|
 | `core` | string | the core name of board (like the core of `arduino:avr:uno` is `arduino:avr`) |
 
-`Object<config>`
+### `Object<config>`
 | key | type | description |
 | --- | ----- | ------------|
 | `sketch_folder` | string | Folder path of sketch that will store. |
