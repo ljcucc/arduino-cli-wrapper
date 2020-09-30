@@ -37,7 +37,7 @@ Methods:
 | `path` | string | Your arduino board path (or COM) on your computer |
 | `type` | string | board type |
 | `name` | string | board name (ex. Arduino uno, ardunino nano) |
-| `fqbn` | string | FQBN code (like `arduino:avr:uno` )|
+| `fqbn` | string | FQBN code ()|
 | `core` | string | the core name of board (like the core of `arduino:avr:uno` is `arduino:avr`) |
 
 `Object<config>`
