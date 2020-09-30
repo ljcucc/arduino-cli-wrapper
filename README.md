@@ -29,6 +29,7 @@ arduino.board.listall().then(console.log) // will execute command: arduino-cli b
 |---|---|---|
 | `arduino-cli board list` | get all connected board info | `arduino.board.list()::Promise<array<board>>` |
 | `arduino-cli board listall` | get all installed and available board info | `arduino.board.listall()::Promise<array<board>>` |
+| `arduino-cli sketch new` | create new sketch in the path you config (default is `./arduino-cli/sketch`) | `arduino.sketch.new(name::string)::Promise<boolean>` | 
 | *(None)*  | Set config | `arduino.config.set(Object<config>)` |
 | *(None)* | Get config | `arduino.config.get()::Object<config>` |
 
