@@ -6,6 +6,7 @@
 
   const cmd = require("./cmd.js");
   const board = require("./board.js");
+  const sketch = require("./sketch.js");
 
   var mkdirp = require('mkdirp');
   
@@ -26,17 +27,6 @@
   function getInstalledCore(){
   }
 
-  function createSketch(name){
-    return new Promise((callback)=>{
-      const path = `${config.sketch_folder}/${name}`;
-      console.log(path);
-      mkdirp(path).then(e=>{
-        callback(true);
-      }).catch(e=>{
-          throw e;
-        })
-    });
-  }
 
   module.exports = {
     board:{
@@ -45,7 +35,7 @@
       attach: attachBoard,
     },
     sketch:{
-      new: createSketch
+      new: sketch.createSketch
     },
     config: {
       get: ()=>config,

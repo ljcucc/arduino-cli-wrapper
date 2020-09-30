@@ -1,9 +1,9 @@
 const cmd = require("./cmd.js");
 
 function getBoardList(){
-  return cmd.cmdPromiseMaker(['board', 'list'], (data, callback)=>{
+  return cmd.exec(['board', 'list'], (data, callback)=>{
     callback(
-      cmd.getListFromStdout(data,cmd.dict2args({
+      cmd.toList(data,cmd.dict2args({
         path: "Path",
         type: "Type",
         name: "Board Name",
@@ -15,9 +15,9 @@ function getBoardList(){
 }
 
 function listAllBoard(){
-  return cmd.cmdPromiseMaker(['board', 'listall'], (data, callback)=>{
+  return cmd.exec(['board', 'listall'], (data, callback)=>{
     callback(
-      cmd.getListFromStdout(data,cmd.dict2args({
+      cmd.toList(data,cmd.dict2args({
         name: "Board Name",
         fqbn: "FQBN"
       }))

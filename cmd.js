@@ -1,6 +1,6 @@
 var childProcess = require('child_process');
 
-function cmdPromiseMaker(args, run){
+function exec(args, run){
   var child = childProcess.spawn('arduino-cli', args);
   return new Promise((callback)=>{
     child.on('close', function(code) {
@@ -14,7 +14,7 @@ function cmdPromiseMaker(args, run){
   });
 }
 
-function getListFromStdout(data, args){
+function toList(data, args){
   var stdout = data.toString().split("\n");
   var title = stdout.splice(0,1)[0];
 
