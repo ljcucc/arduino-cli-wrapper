@@ -28,10 +28,13 @@
 
   function createSketch(name){
     return new Promise((callback)=>{
-      mkdirp(`${config.sketch_folder}/${name}`, e=>{
-        if(e) throw e;
+      const path = `${config.sketch_folder}/${name}`;
+      console.log(path);
+      mkdirp(path).then(e=>{
         callback(true);
-      });
+      }).catch(e=>{
+          throw e;
+        })
     });
   }
 

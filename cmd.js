@@ -39,4 +39,4 @@ module.exports = {
   cmdPromiseMaker,
   getListFromStdout,
   dict2args
-}
+};

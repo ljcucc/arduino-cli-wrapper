@@ -3,7 +3,7 @@ const cmd = require("./cmd.js");
 function getBoardList(){
   return cmd.cmdPromiseMaker(['board', 'list'], (data, callback)=>{
     callback(
-      getListFromStdout(data,cmd.dict2args({
+      cmd.getListFromStdout(data,cmd.dict2args({
         path: "Path",
         type: "Type",
         name: "Board Name",
