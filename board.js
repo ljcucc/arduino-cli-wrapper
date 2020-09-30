@@ -26,6 +26,9 @@ function listAllBoard(){
   });
 }
 
+function attachBoard(board){
+}
+
 module.exports = {
   getBoardList,
   listAllBoard

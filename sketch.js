@@ -5,6 +5,7 @@ function createSketch(name){
   //console.log(path);
   mkdirp(path).then(e=>{
     cmd.cmdPromiseMaker(['sketch','new'], (data, callback)=>{
+      callback(data.toString());
     });
   }).catch(e=>{
     throw e;
