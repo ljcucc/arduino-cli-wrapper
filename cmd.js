@@ -26,7 +26,7 @@ function toList(data, args){
   });
 }
 
-var dict2args = (dict) => 
+var dataForm = (dict) => 
   Object.keys(dict).reduce((result, id)=>{
     result.push({
       title: dict[id],
@@ -36,7 +36,7 @@ var dict2args = (dict) =>
   }, []);
 
 module.exports = {
-  cmdPromiseMaker,
-  getListFromStdout,
-  dict2args
+  exec,
+  toList,
+  dataForm
 };
