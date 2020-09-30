@@ -6,6 +6,8 @@
 
   const cmd = require("./cmd.js");
   const board = require("./board.js");
+
+  var mkdirp = require('mkdirp');
   
   var config = {
     sketch_folder: "./arduino-cli/sketch"
@@ -22,10 +24,15 @@
   }
 
   function getInstalledCore(){
-
   }
 
-  function createSketch(){
+  function createSketch(name){
+    return new Promise((callback)=>{
+      mkdrip(`${config.sketch_folder}/${name}`, e=>{
+        if(e) throw e;
+        callback(true);
+      });
+    });
   }
 
   module.exports = {
@@ -34,9 +41,12 @@
       listall: board.listAllBoard,
       attach: attachBoard,
     },
+    sketch:{
+      new: createSketch
+    },
     config: {
       get: ()=>config,
-      set: (newConfig)=> config = newConfig;
+      set: (newConfig)=> config = newConfig
     }
   };
 })();
