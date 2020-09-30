@@ -23,12 +23,15 @@ var listAllBoard = () => cmd.exec(['board', 'listall'], (data, callback)=>{
 });
 
 function attachBoard(board){
-  return cmd.exec(['board', 'attach'], (data, callback)=>{
-    callback();
+  return cmd.exec(['board', 'attach', board.fqbn], (data, callback)=>{
+    callback({
+      msg: data.toString()
+    });
   });
 }
 
 module.exports = {
   getBoardList,
-  listAllBoard
+  listAllBoard,
+  attachBoard
 }

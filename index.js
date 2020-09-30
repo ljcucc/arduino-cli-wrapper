@@ -32,7 +32,7 @@
     board:{
       list: board.getBoardList,
       listall: board.listAllBoard,
-      attach: attachBoard,
+      attach: board.attachBoard,
     },
     sketch:{
       new: sketch.createSketch
