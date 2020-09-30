@@ -39,7 +39,7 @@ arduino.board.listall().then(console.log) // will execute command: arduino-cli b
 | `path` | string | Your arduino board path (or COM) on your computer |
 | `type` | string | board type |
 | `name` | string | board name (ex. Arduino uno, ardunino nano) |
-| `fqbn` | string | FQBN code ()|
+| `fqbn` | string | FQBN code (like   `arduino:avr:uno`)|
 | `core` | string | the core name of board (like the core of `arduino:avr:uno` is `arduino:avr`) |
 
 ### `Object<config>`
