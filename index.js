@@ -28,7 +28,7 @@
 
   function createSketch(name){
     return new Promise((callback)=>{
-      mkdrip(`${config.sketch_folder}/${name}`, e=>{
+      mkdirp(`${config.sketch_folder}/${name}`, e=>{
         if(e) throw e;
         callback(true);
       });

@@ -37,5 +37,6 @@ var dict2args = (dict) =>
 
 module.exports = {
   cmdPromiseMaker,
-  getListFromStdout
+  getListFromStdout,
+  dict2args
 }
