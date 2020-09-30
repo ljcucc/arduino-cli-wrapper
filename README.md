@@ -32,8 +32,9 @@ Methods:
 | *(None)*  | Set config | `arduino.config.set(Object<config>)` |
 | *(None)* | Get config | `arduino.config.get()::Object<config>` |
 
-`board` type object
+`board` type object:
 | key | type | description |
+|---|---|---|
 | `path` | string | Your arduino board path (or COM) on your computer |
 | `type` | string | board type |
 | `name` | string | board name (ex. Arduino uno, ardunino nano) |
