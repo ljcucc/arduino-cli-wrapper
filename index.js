@@ -14,20 +14,6 @@
     sketch_folder: "./arduino-cli/sketch"
   };
 
-
-  function attachBoard(){
-    fs.writeFile(config.sketch_path.dirname(), "", function(err) {
-      if(err) {
-        return console.log(err);
-      }
-      console.log("The file was saved!");
-    }); 
-  }
-
-  function getInstalledCore(){
-  }
-
-
   module.exports = {
     board:{
       list: board.getBoardList,
@@ -37,6 +23,7 @@
     sketch:{
       new: sketch.createSketch
     },
+    compile: (sketch_name)=>sketch.compileSketch(config, sketch_name),
     config: {
       get: ()=>config,
       set: (newConfig)=> config = newConfig

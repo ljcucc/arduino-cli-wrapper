@@ -1,6 +1,6 @@
 const cmd = require("./cmd.js");
 
-function createSketch(name){
+function createSketch(config, name){
   const path = `${config.sketch_folder}/${name}`;
   //console.log(path);
   mkdirp(path).then(e=>{
@@ -9,7 +9,14 @@ function createSketch(name){
     });
   }).catch(e=>{
     throw e;
-  })
+  });
+}
+
+function compileSketch(config, board, name){
+  const path = `${config.sketch_folder}/${name}`;
+
+  return cmd.cmdPromiseMaker(['compile', '-b', board.fqbn, path], (data, callback)=>{
+  });
 }
 
 module.exports = {
