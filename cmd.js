@@ -26,7 +26,7 @@ function toList(data, args){
   });
 }
 
-var dataForm = (dict) => 
+var dataType = (dict) =>
   Object.keys(dict).reduce((result, id)=>{
     result.push({
       title: dict[id],
@@ -38,5 +38,5 @@ var dataForm = (dict) =>
 module.exports = {
   exec,
   toList,
-  dataForm
+  dataType
 };

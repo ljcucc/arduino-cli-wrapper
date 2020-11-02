@@ -1,14 +1,20 @@
 const cmd = require("./cmd.js");
+const mkdirp = require('mkdirp');
 
 function createSketch(config, name){
   const path = `${config.sketch_folder}/${name}`;
   //console.log(path);
-  mkdirp(path).then(e=>{
-    cmd.cmdPromiseMaker(['sketch','new'], (data, callback)=>{
-      callback(data.toString());
+  //
+  return new Promise((callback)=>{
+    mkdirp(path).then(e=>{
+      cmd.cmdPromiseMaker(['sketch','new'], (data, callback)=>{
+        callback(data.toString());
+      });
+    }).catch(e=>{
+      throw e;
     });
-  }).catch(e=>{
-    throw e;
+
+    callback();
   });
 }
 
