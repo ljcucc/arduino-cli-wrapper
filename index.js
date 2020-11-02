@@ -23,7 +23,7 @@
     sketch:{
       new: (name)=>sketch.createSketch(config, name),
     },
-    compile: (sketch_name)=>sketch.compileSketch(config, sketch_name),
+    compile: (sketch_name, board)=>sketch.compileSketch(config,board, sketch_name),
     config: {
       get: ()=>config,
       set: (newConfig)=> config = newConfig

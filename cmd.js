@@ -4,8 +4,8 @@ function exec(args, run){
   var child = childProcess.spawn('arduino-cli', args);
   return new Promise((callback)=>{
     child.on('close', function(code) {
-      process.exit(code);
-
+      //process.exit(code);
+      console.log(`child process ${args} close with code: ${code}`);
     });
 
     child.stdout.on('data', data=>{

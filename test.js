@@ -1,47 +1,28 @@
 var arduino = require("./index.js");
 
-var commands = ['config set', 'board list', 'sketch new', 'compile'];
 var board = {};
 
-for(var index in commands){
-  runMode(commands[index]);
-}
+//set project
+arduino.config.set({
+  sketch_folder: "./arduino-cli/sketch"
+});
 
-function runMode(mode){
-  console.log(mode);
-  switch(mode){
-    case 'config set':
-      arduino.config.set({
-        sketch_folder: "./arduino-cli/sketch"
-      })
-      break;
-    case 'board list':
-      arduino.board.list().then(data=>{
-        console.log("Test is starting...");
-        board = data[data.length -1];
+//list boards
+arduino.board.list().then(data=>{
+  console.log("Test is starting...");
+  board = data[data.length -1]; //select the last board
 
-        console.log(board);
-      });
-      break;
-    case 'board listall':
-      arduino.board.listall().then(data=>{
-        console.log(data);
-      });
-      break;
-    case "sketch new":
-      arduino.sketch.new("test_project").then(data=>{
-        console.log("new project created!");
-      });
-      break;
+  // then compile
+  arduino.compile("test_project", board).then(data=>{
+    console.log("compiled");
+    console.log(data);
+  });
 
-    case "compile":
-      arduino.compile("test_project");
-      break;
+  console.log("compiling...");
+  // then create a new project
+  /*arduino.sketch.new("test_project").then(data=>{
+    console.log("new project created!");
 
-    case "quit":
-      quit = true;
-      return;
-    default:
-      console.log("mode not found");
-  }
-}
+  });
+  console.log(board);*/
+});
