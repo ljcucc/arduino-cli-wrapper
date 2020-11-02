@@ -3,8 +3,7 @@ const mkdirp = require('mkdirp');
 
 function createSketch(config, name){
   const path = `${config.sketch_folder}/${name}`;
-  //console.log(path);
-  //
+
   return new Promise((callback)=>{
     mkdirp(path).then(e=>{
       cmd.exec(['sketch','new'], (data, callback)=>{
@@ -19,12 +18,13 @@ function createSketch(config, name){
 }
 
 function compileSketch(config, board, name){
+  console.log("compiling sketch...");
   const path = `${config.sketch_folder}/${name}`;
-
-  return cmd.exec(['compile', '-b', board.fqbn, path], (data, callback)=>{
+  return cmd.exec(['compile', '-u', '-b', board.fqbn,'-p', path], (data, callback)=>{
   });
 }
 
 module.exports = {
-  createSketch
+  createSketch,
+  compileSketch
 }

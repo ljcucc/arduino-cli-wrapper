@@ -21,7 +21,7 @@
       attach: board.attachBoard,
     },
     sketch:{
-      new: (name)=>sketch.createSketch(config, name)
+      new: (name)=>sketch.createSketch(config, name),
     },
     compile: (sketch_name)=>sketch.compileSketch(config, sketch_name),
     config: {
