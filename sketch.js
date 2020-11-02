@@ -7,7 +7,7 @@ function createSketch(config, name){
   //
   return new Promise((callback)=>{
     mkdirp(path).then(e=>{
-      cmd.cmdPromiseMaker(['sketch','new'], (data, callback)=>{
+      cmd.exec(['sketch','new'], (data, callback)=>{
         callback(data.toString());
       });
     }).catch(e=>{
@@ -21,7 +21,7 @@ function createSketch(config, name){
 function compileSketch(config, board, name){
   const path = `${config.sketch_folder}/${name}`;
 
-  return cmd.cmdPromiseMaker(['compile', '-b', board.fqbn, path], (data, callback)=>{
+  return cmd.exec(['compile', '-b', board.fqbn, path], (data, callback)=>{
   });
 }
 
