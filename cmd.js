@@ -8,6 +8,10 @@ function exec(args, run){
       console.log(`child process ${args} close with code: ${code}`);
     });
 
+    child.stderr.on("data", data=>{
+      console.log(`error: ${data}`);
+    });
+
     child.stdout.on('data', data=>{
       run(data, callback);
     });
